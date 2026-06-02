@@ -1,6 +1,5 @@
 class quantumRNG: 
-    """This is a module docstring, shown when you use help() on a module
-    
+    """
     For an upper bound defined by x, it picks enough qubits (log base 2 of x, rounded up) and fills all the quantum states from 000 to the maximum required such as
     each quantum state has a probability of 1/sqrt(x), and therefore, the squared sum of all probabilities is 1
     """
