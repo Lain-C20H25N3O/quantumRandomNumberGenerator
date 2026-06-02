@@ -8,7 +8,7 @@ from qiskit import QuantumCircuit
 from qiskit_aer import AerSimulator
 from qiskit import transpile
 from qiskit.quantum_info import Statevector
-from qiskit.visualization import plot_histogram, plot_state_city
+from qiskit.visualization import plot_histogram
 
 from sortedcontainers import SortedDict
 
@@ -16,12 +16,9 @@ import math
 import argparse
 import matplotlib.pyplot as plt
 
-def equal_probability(x):
-  return 1/math.sqrt(x)
-
 def fillAmps(amplitudeList,size):
     for x in range(size):
-        amplitudeList[x] = equal_probability(size)
+        amplitudeList[x] = 1/math.sqrt(size)
     return amplitudeList
 
 
@@ -35,13 +32,10 @@ args = parser.parse_args()
 shots = int(args.shots or 100)
 if shots < 1:
   raise Exception("Amount of shots must be positive")
-
 limit = int(args.limit or 6)
 if limit < 2:
   raise Exception("Limit must be strictly bigger than one")
-
 memory = bool(args.memory or False)
-
 histogram = bool(args.histogram or False)
 
 print("Shots:",shots,"\tUpper limit:",limit,"\tAverage shots per quantum state expected: ",int(shots/limit))
